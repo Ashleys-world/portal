@@ -27,7 +27,7 @@ function Profile({ isAuth }) {
         await deleteDoc(moduleDoc);
     };
 
-    useEffect((modulesCollectionRef) => {
+    useEffect(() => {
         const getModules = async () => {
           const data = await getDocs(modulesCollectionRef);
           setModuleList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
@@ -68,14 +68,14 @@ function Profile({ isAuth }) {
             {moduleList.map((module) => {
                 return (    
                 <div className="post">
-                    {isAuth && module.author.id === auth.currentUser.uid ? (
+                    {isAuth && module.author.id == auth.currentUser.uid ? (
                         <div>
                             <div className="postHeader">
                             <div className="title">
                                 <h1>Module </h1>
                             </div>
                             <div className="deletePost">
-                                {isAuth && module.author.id === auth.currentUser.uid && (
+                                {isAuth && module.author.id == auth.currentUser.uid && (
                                 <button
                                     onClick={() => {
                                     deleteModule(module.id);

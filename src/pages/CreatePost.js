@@ -19,7 +19,7 @@ function CreatePost({ isAuth }) {
     navigate("/home");
   };
 
-  useEffect((isAuth,navigate) => {
+  useEffect(() => {
     if (!isAuth) {
       navigate("/login");
     }
